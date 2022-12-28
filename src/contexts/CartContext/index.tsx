@@ -15,14 +15,12 @@ interface iContext {
   setProductsCart: React.Dispatch<React.SetStateAction<iProductsCart[]>>
   valueCart: number
   setValueCart: React.Dispatch<React.SetStateAction<number>>
-  getItemQuantity: (id: number) => void
 }
 
 interface iProductsCart {
   id: number
   name: string
   img: string
-  quantity: number
   price: number
 }
 
@@ -34,42 +32,6 @@ export const CartProvider = ({ children }: iContextProps) => {
   const [emptyCart, setEmptyCart] = useState(true)
   const [productsCart, setProductsCart] = useState<iProductsCart[]>([])
   const [valueCart, setValueCart] = useState(0)
-
-  const getItemQuantity = (id: number) => {
-    return productsCart.find((item) => item.id === id)?.quantity || 0
-  }
-
-  // const increaseCartQuantity(id: number) {
-  //   setProductsCart(currItems => {
-  //     if(currItems.find(item => item.id === id) == null) {
-  //       return [...currItems, {id, quantity: 1}]
-  //     } else {
-  //       return currItems.map(item => {
-  //         if (item.id === id) {
-  //           return { ...item, quantity: item.quantity + 1 }
-  //         } else {
-  //           return item
-  //         }
-  //       })
-  //     }
-  //   })
-  // }
-
-  // const decreaseCartQuantity(id: number) {
-  //   setProductsCart(currItems => {
-  //     if(currItems.find(item => item.id === id) == null) {
-  //       return [...currItems, {id, quantity: 1}]
-  //     } else {
-  //       return currItems.map(item => {
-  //         if (item.id === id) {
-  //           return { ...item, quantity: item.quantity + 1 }
-  //         } else {
-  //           return item
-  //         }
-  //       })
-  //     }
-  //   })
-  // }
 
   return (
     <CartContext.Provider
@@ -84,7 +46,6 @@ export const CartProvider = ({ children }: iContextProps) => {
         setProductsCart,
         valueCart,
         setValueCart,
-        getItemQuantity,
       }}
     >
       {children}

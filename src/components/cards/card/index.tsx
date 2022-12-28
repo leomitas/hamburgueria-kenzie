@@ -11,13 +11,11 @@ interface iProducts {
 }
 
 const Card = ({ img, name, category, price, id }: iProducts) => {
-  const [quantity, setQuantity] = useState(0)
   const product = () => {
     return {
       id: id,
       name: name,
       img: img,
-      quantity: quantity,
       price: price,
     }
   }
@@ -28,6 +26,8 @@ const Card = ({ img, name, category, price, id }: iProducts) => {
     setValueCart,
     valueCart,
   } = useContext(CartContext)
+  const idProduct = productsCart.find((product) => product.id === id) == null
+
   return (
     <Li>
       <div>
@@ -44,18 +44,11 @@ const Card = ({ img, name, category, price, id }: iProducts) => {
         </p>
         <button
           onClick={() => {
-            console.log(quantity)
-            setQuantity(quantity + 1)
-          }}
-        >
-          quantidade
-        </button>
-        <p>{product().quantity}</p>
-        <button
-          onClick={() => {
-            setProductsCart([...productsCart, product()])
-            setEmptyCart(false)
-            setValueCart(valueCart + price)
+            if (idProduct) {
+              setProductsCart([...productsCart, product()])
+              setEmptyCart(false)
+              setValueCart(valueCart + price)
+            }
           }}
         >
           Adicionar
