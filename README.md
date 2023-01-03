@@ -2,7 +2,7 @@ Esse projeto simula um ambiente de uma loja online, no qual o usuário pode cria
 Ele tem funcionalidades como, login, cadastro, modal de carrinho que mostra os produtos adicionados 
 Foi feito como entrega semanal do curso Kenzie Academy e está utilizando a api disponibilizada por eles.
 
-Link do vercel: https://react-entrega-hamburgueria-v2-leomitas.vercel.app/
+Link do vercel: https://hamburgueria-kenzie-beige.vercel.app/
 
 ReactTs, bibliotecas utilizadas: 
 Axios para fazer as requisições da api. 
